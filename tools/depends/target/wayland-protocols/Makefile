@@ -5,7 +5,7 @@ DEPS=Makefile
 LIBNAME=wayland-protocols
 VERSION=1.20
 SOURCE=$(LIBNAME)-$(VERSION)
-ARCHIVE=$(SOURCE).tar.gz
+ARCHIVE=$(SOURCE).tar.xz
 
 ifeq ($(PLATFORM),)
 	# Building stand-alone
@@ -36,7 +36,7 @@ ifeq ($(PREFIX),)
 endif
 	rm -rf $(PLATFORM)/*; mkdir -p $(PLATFORM)
 	cd $(PLATFORM); $(ARCHIVE_TOOL) $(ARCHIVE_TOOL_FLAGS) $(TARBALLS_LOCATION)/$(ARCHIVE)
-	cd $(PLATFORM); $(AUTORECONF) -vif
+	cd $(PLATFORM); $(AUTORECONF)
 	cd $(PLATFORM); $(CONFIGURE)
 
 .installed-$(PLATFORM): $(PLATFORM)
